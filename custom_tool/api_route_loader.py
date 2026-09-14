@@ -39,14 +39,14 @@ def _format_api_route_error(ex):
     msg = str(ex)
 
     if "AuthenticationError" in qualname:
-        return f"[API-Route Auth Error] Invalid or missing API key. Please check your API-Route key from https://www.api-route.com. Detail: {msg}"
+        return f"[API Route Auth Error] Invalid or missing API key. Please check your API-Route key from https://www.api-route.com. Detail: {msg}"
     if "NotFoundError" in qualname:
-        return f"[API-Route Model Not Found] Model name may be invalid or unsupported. Detail: {msg}"
+        return f"[API Route Model Not Found] Model name may be invalid or unsupported. Detail: {msg}"
     if "RateLimitError" in qualname:
-        return f"[API-Route Rate Limit] Rate limit reached. Please retry shortly. Detail: {msg}"
+        return f"[API Route Rate Limit] Rate limit reached. Please retry shortly. Detail: {msg}"
     if "APIConnectionError" in qualname:
-        return f"[API-Route Connection Error] Could not connect to API-Route endpoint. Check base_url and network. Detail: {msg}"
-    return f"[API-Route Error] {msg}"
+        return f"[API Route Connection Error] Could not connect to API-Route endpoint. Check base_url and network. Detail: {msg}"
+    return f"[API Route Error] {msg}"
 
 
 class api_route_Chat:
@@ -202,7 +202,7 @@ class api_route_loader:
                     {
                         "default": DEFAULT_MODEL,
                         "tooltip": (
-                            "API-Route model name. Supports leading models from Claude, OpenAI, DeepSeek, Gemini, etc."
+                            "API Route model name. Supports leading models from Claude, OpenAI, DeepSeek, Gemini, etc."
                         ),
                     },
                 ),
@@ -213,7 +213,7 @@ class api_route_loader:
                     {
                         "default": "",
                         "tooltip": (
-                            "API-Route API key (sk-...). Get your key from https://www.api-route.com"
+                            "API Route API key (sk-...). Get your key from https://www.api-route.com"
                         ),
                     },
                 ),
@@ -222,7 +222,7 @@ class api_route_loader:
                     {
                         "default": DEFAULT_BASE_URL,
                         "tooltip": (
-                            "API-Route base URL (default: https://global.api-route.com/v1)."
+                            "API Route base URL (default: https://global.api-route.com/v1)."
                         ),
                     },
                 ),
@@ -240,8 +240,8 @@ class api_route_loader:
 
     RETURN_TYPES = ("CUSTOM",)
     RETURN_NAMES = ("model",)
-    OUTPUT_TOOLTIPS = ("The loaded API-Route model.",)
-    DESCRIPTION = "Load models via API-Route (https://www.api-route.com). High-concurrency AI gateway offering Claude, GPT-4o, DeepSeek, Gemini, and open models."
+    OUTPUT_TOOLTIPS = ("The loaded API Route model.",)
+    DESCRIPTION = "Load models via API Route (https://www.api-route.com). High-concurrency AI gateway offering Claude, GPT-4o, DeepSeek, Gemini, and open models."
     FUNCTION = "chatbot"
     CATEGORY = "大模型派对（llm_party）/模型加载器（model loader）"
 
@@ -256,5 +256,5 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "api_route_loader": "⚡API-Route Loader",
+    "api_route_loader": "⚡API Route Loader",
 }

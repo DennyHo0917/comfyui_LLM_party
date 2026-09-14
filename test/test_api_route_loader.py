@@ -1,5 +1,5 @@
 """
-Unit tests for API-Route Loader integration.
+Unit tests for API Route Loader integration.
 """
 
 import importlib.util
@@ -31,7 +31,7 @@ class TestApiRouteLoader:
         assert "api_route_loader" in NODE_CLASS_MAPPINGS
         assert NODE_CLASS_MAPPINGS["api_route_loader"] is api_route_loader
         assert "api_route_loader" in NODE_DISPLAY_NAME_MAPPINGS
-        assert "API-Route" in NODE_DISPLAY_NAME_MAPPINGS["api_route_loader"]
+        assert "API Route" in NODE_DISPLAY_NAME_MAPPINGS["api_route_loader"]
 
     def test_input_types(self):
         inputs = api_route_loader.INPUT_TYPES()
@@ -59,13 +59,13 @@ class TestApiRouteLoader:
     def test_error_formatting(self):
         ex = type("AuthenticationError", (Exception,), {"__module__": "openai"})("Invalid key")
         err = _format_api_route_error(ex)
-        assert "[API-Route Auth Error]" in err
+        assert "[API Route Auth Error]" in err
 
     def test_chat_send_mock(self):
         chat = api_route_Chat("claude-sonnet-4-5", api_key="sk-test")
         mock_client = mock.MagicMock()
         mock_choice = mock.MagicMock()
-        mock_choice.message.content = "Hello from API-Route"
+        mock_choice.message.content = "Hello from API Route"
         mock_choice.message.reasoning_content = None
         mock_resp = mock.MagicMock()
         mock_resp.choices = [mock_choice]
@@ -74,7 +74,7 @@ class TestApiRouteLoader:
         with mock.patch("api_route_loader.OpenAI", return_value=mock_client):
             history = []
             content, hist, reasoning = chat.send("Hi", 0.7, 100, history)
-            assert content == "Hello from API-Route"
+            assert content == "Hello from API Route"
             assert len(hist) == 2
             assert hist[0]["role"] == "user"
             assert hist[1]["role"] == "assistant"
