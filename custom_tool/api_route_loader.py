@@ -39,13 +39,13 @@ def _format_api_route_error(ex):
     msg = str(ex)
 
     if "AuthenticationError" in qualname:
-        return f"[API Route Auth Error] Invalid or missing API key. Please check your API-Route key from https://www.api-route.com. Detail: {msg}"
+        return f"[API Route Auth Error] Invalid or missing API key. Please check your API Route key from https://www.api-route.com. Detail: {msg}"
     if "NotFoundError" in qualname:
         return f"[API Route Model Not Found] Model name may be invalid or unsupported. Detail: {msg}"
     if "RateLimitError" in qualname:
         return f"[API Route Rate Limit] Rate limit reached. Please retry shortly. Detail: {msg}"
     if "APIConnectionError" in qualname:
-        return f"[API Route Connection Error] Could not connect to API-Route endpoint. Check base_url and network. Detail: {msg}"
+        return f"[API Route Connection Error] Could not connect to API Route endpoint. Check base_url and network. Detail: {msg}"
     return f"[API Route Error] {msg}"
 
 
